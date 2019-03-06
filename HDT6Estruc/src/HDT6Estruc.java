@@ -34,7 +34,7 @@ public class HDT6Estruc {
         Scanner scan = new Scanner(System.in);
         MapFactory myfactory=new MapFactory();
         int n, mons=0, tramp=0, hech=0;
-        String choice="", monst="Tus monstruos son: ", tramps="Tus monstruos son: ", hechis="Tus monstruos son: ";
+        String choice="", monst="Tus monstruos son: ", tramps="Tus trampas son: ", hechis="Tus hechizos son: ";
         System.out.println("Introduzca el tipo del Map con el cual desea trabajar");
         System.out.println("1. HashMap");
         System.out.println("2. TreeMap");
@@ -74,8 +74,8 @@ public class HDT6Estruc {
             System.out.println("2. Mostrar el tipo de una carta específica");
             System.out.println("3. Mostrar el nombre, tipo y cantidad de cada carta que e usuario tiene en su colección");
             System.out.println("4. Mostrar el nombre, tipo y cantidad de cada carta que e usuario tiene en su colección pero ordenadas por tipo");
-            System.out.println("5. Mostrar y tipo de todas la cartas");
-            System.out.println("6. Mostrar y tipo de todas la cartas");
+            System.out.println("5. Mostrar nombre y tipo de todas la cartas");
+            System.out.println("6. Mostrar nombre y tipo de todas la cartas");
             System.out.println("7. Salir del juego");
             //System.out.println(choice);
             choice=scan.nextLine();
@@ -134,6 +134,9 @@ public class HDT6Estruc {
                 System.out.println(tramps);
                 System.out.println("Cantidad de hechizos: "+hech);
                 System.out.println(hechis);
+            }else if (choice.equals("5")){
+                System.out.println("Las cartas disponibles en el mazo son: ");
+                System.out.println(CartasT);
             }
             
         }
