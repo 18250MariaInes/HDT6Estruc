@@ -31,10 +31,12 @@ public class HDT6Estruc {
         Map<String, String> CartasJ;
         ArrayList<String> list=new ArrayList();
         ArrayList<String> personas=new ArrayList();
+        ArrayList<String> cartas =new ArrayList();
         Scanner scan = new Scanner(System.in);
         MapFactory myfactory=new MapFactory();
         int n, mons=0, tramp=0, hech=0;
-        String choice="", monst="Tus monstruos son: ", tramps="Tus trampas son: ", hechis="Tus hechizos son: ";
+        String choice="", monst="Tus monstruos son: ", tramps="Tus trampas son: ", hechis="Tus hechizos son: ",
+                monsts = "Los monstruos totales son: ", trampas = "Las trampas totales son: ", hechizo = "Los hechizos totales son: ";
         System.out.println("Introduzca el tipo del Map con el cual desea trabajar");
         System.out.println("1. HashMap");
         System.out.println("2. TreeMap");
@@ -64,9 +66,11 @@ public class HDT6Estruc {
         for (int i=0; i<list.size(); i++){
            String car=(list.get(i));
             String[] parts=car.split("[|]");
+            cartas.add(parts[0]);
             CartasT.put(parts[0],parts[1]);
             
         }
+        System.out.println(cartas);
         //System.out.println(CartasT);
          while (!choice.equals("7")){
             System.out.println("Escoge una accion que deseas realizar");
@@ -134,10 +138,30 @@ public class HDT6Estruc {
                 System.out.println(tramps);
                 System.out.println("Cantidad de hechizos: "+hech);
                 System.out.println(hechis);
+                mons = 0;
+                tramp = 0;
+                hech = 0;
             }else if (choice.equals("5")){
                 System.out.println("Las cartas disponibles en el mazo son: ");
                 System.out.println(CartasT);
+            }else if (choice.equals("6")){
+                for (int c = 0; c< cartas.size(); c++){
+                    String nombre = cartas.get(c);
+                    String tipo = CartasT.get(nombre);
+                    if (tipo.equals("Monstruo")){
+                        monsts=monsts+"\n"+nombre;
+                    }else if (tipo.equals("Trampa")){
+                        trampas=trampas+"\n"+nombre;
+                    }else{
+                        hechizo=hechizo+"\n"+nombre;
+                    }
+                }
+                System.out.println(monsts);
+                System.out.println(trampas);
+                System.out.println(hechizo);
+                
             }
+         
             
         }
         
