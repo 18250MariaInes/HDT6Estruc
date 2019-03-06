@@ -18,7 +18,7 @@ import java.util.Collection;
 
 /**
  *
- * @author Educho
+ * @author andy
  */
 public class HDT6Estruc {
 
@@ -26,9 +26,10 @@ public class HDT6Estruc {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        Map<String, String> CartasT;
-        Map<String, String> CartasJ;
+        //MAZOS PARA EL JUEGO
+        Map<String, String> CartasT;//MAZO TOTAL
+        Map<String, String> CartasJ;//MAZO DEL JUGADOR
+        //variables necesarias en el proyecto para su realizacion
         ArrayList<String> list=new ArrayList();
         ArrayList<String> personas=new ArrayList();
         ArrayList<String> cartas =new ArrayList();
@@ -37,6 +38,7 @@ public class HDT6Estruc {
         int n, mons=0, tramp=0, hech=0;
         String choice="5", monst="Tus monstruos son: ", tramps="Tus trampas son: ", hechis="Tus hechizos son: ",
                 monsts = "Los monstruos totales son: ", trampas = "Las trampas totales son: ", hechizo = "Los hechizos totales son: ";
+        //MENU
         System.out.println("Introduzca el tipo del Map con el cual desea trabajar");
         System.out.println("1. HashMap");
         System.out.println("2. TreeMap");
@@ -48,9 +50,10 @@ public class HDT6Estruc {
             System.out.println("No haz ingresado un numero. El programa se ejecutara con HashMap\n");
             n = 1;
         }
+        //uso del factory para realizar el tipo de map que desea el usuario
         CartasT=myfactory.creadorMap(n);
         CartasJ=myfactory.creadorMap(n);
-
+//lectura del .txt
         try{
             Stream<String> lines = Files.lines(
                     Paths.get("cards_desc.txt"),
@@ -62,7 +65,7 @@ public class HDT6Estruc {
             System.out.println("Error!");
         }
         System.out.println(list);
-        
+        //Guarda tarjetas del mazo
         for (int i=0; i<list.size(); i++){
            String car=(list.get(i));
             String[] parts=car.split("[|]");
@@ -70,8 +73,8 @@ public class HDT6Estruc {
             CartasT.put(parts[0],parts[1]);
             
         }
-        //System.out.println(cartas);
-     
+        
+     //ciclo de operaciones para la hoja de trabajo
          while (!choice.equals("7")){
              if (!choice.equals("")){
             System.out.println("Escoge una accion que deseas realizar");
@@ -84,6 +87,8 @@ public class HDT6Estruc {
             System.out.println("7. Salir del juego");
          }
             choice=scan.nextLine();
+            //eleccion de guardar una carta del mazo en del jugador
+            //progra defensiva si escoge una carta que existe
             if (choice.equals("1")){
                 System.out.println("Ingrese el nombre de la carta que desea. Cuidado con faltas ortográficas");
                 String personaje=scan.nextLine();
@@ -97,11 +102,12 @@ public class HDT6Estruc {
                 }else{
                     System.out.println("ERROR ESA CARTA NO EXISTE");
                 }
-                
+                //eleccion de averiguar el tipo de una carta entre monstruo, trampa, hechizo
             }else if (choice.equals("2")){
                 System.out.println("Ingrese el nombre de la carta que desea saber su tipo. Cuidado con faltas ortográficas");
                 String personaje=scan.nextLine();
                 System.out.println("Es un "+CartasT.get(personaje));
+                //eleccion de visualizar el nombre, tipo y cantidad de cartas del jugador. 
             }else if (choice.equals("3")){
                 Object[] tipos=CartasJ.values().toArray();
                 
@@ -123,6 +129,7 @@ public class HDT6Estruc {
                 mons=0;
                 tramp=0;
                 hech=0;
+                //eleccion de visualizar el nombre, tipo y cantidad de cartas del jugador. Se ordena por su tipo
             }else if (choice.equals("4")){
                 for (int l=0; l<personas.size (); l++){
                     String nombre=personas.get(l);
@@ -147,9 +154,11 @@ public class HDT6Estruc {
                 mons = 0;
                 tramp = 0;
                 hech = 0;
+                //muestra todas las cartas del mazo
             }else if (choice.equals("5")){
                 System.out.println("Las cartas disponibles en el mazo son: ");
                 System.out.println(CartasT);
+                //muestra las cartas del mazo organizados por su tipo
             }else if (choice.equals("6")){
                 for (int c = 0; c< cartas.size(); c++){
                     String nombre = cartas.get(c);

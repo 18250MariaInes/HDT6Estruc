@@ -14,6 +14,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+//metodo que genera el map que desea el usuario. FACTORY
 public class MapFactory {
     public Map creadorMap(int n){
         if (n==1){
