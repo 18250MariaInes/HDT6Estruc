@@ -35,7 +35,7 @@ public class HDT6Estruc {
         Scanner scan = new Scanner(System.in);
         MapFactory myfactory=new MapFactory();
         int n, mons=0, tramp=0, hech=0;
-        String choice="", monst="Tus monstruos son: ", tramps="Tus trampas son: ", hechis="Tus hechizos son: ",
+        String choice="5", monst="Tus monstruos son: ", tramps="Tus trampas son: ", hechis="Tus hechizos son: ",
                 monsts = "Los monstruos totales son: ", trampas = "Las trampas totales son: ", hechizo = "Los hechizos totales son: ";
         System.out.println("Introduzca el tipo del Map con el cual desea trabajar");
         System.out.println("1. HashMap");
@@ -70,28 +70,34 @@ public class HDT6Estruc {
             CartasT.put(parts[0],parts[1]);
             
         }
-        System.out.println(cartas);
-        //System.out.println(CartasT);
+        //System.out.println(cartas);
+     
          while (!choice.equals("7")){
+             if (!choice.equals("")){
             System.out.println("Escoge una accion que deseas realizar");
             System.out.println("1. Escoger una carta del mazo y agregarla a la tuya");
             System.out.println("2. Mostrar el tipo de una carta específica");
-            System.out.println("3. Mostrar el nombre, tipo y cantidad de cada carta que e usuario tiene en su colección");
-            System.out.println("4. Mostrar el nombre, tipo y cantidad de cada carta que e usuario tiene en su colección pero ordenadas por tipo");
+            System.out.println("3. Mostrar el nombre, tipo y cantidad de cada carta que el usuario tiene en su colección");
+            System.out.println("4. Mostrar el nombre, tipo y cantidad de cada carta que el usuario tiene en su colección pero ordenadas por tipo");
             System.out.println("5. Mostrar nombre y tipo de todas la cartas");
-            System.out.println("6. Mostrar nombre y tipo de todas la cartas");
+            System.out.println("6. Mostrar nombre y ordenadas por su tipo de todas la cartas del mazo ");
             System.out.println("7. Salir del juego");
-            //System.out.println(choice);
+         }
             choice=scan.nextLine();
             if (choice.equals("1")){
                 System.out.println("Ingrese el nombre de la carta que desea. Cuidado con faltas ortográficas");
                 String personaje=scan.nextLine();
-                personas.add(personaje);
-                String value=CartasT.get(personaje);
-                CartasT.remove(personaje);
-                CartasJ.put(personaje, value);
-                System.out.println("Este es tu mazo por el momennto: ");
-                System.out.println(CartasJ);
+                if (CartasT.containsKey(personaje)==true){
+                    personas.add(personaje);
+                    String value=CartasT.get(personaje);
+                    CartasT.remove(personaje);
+                    CartasJ.put(personaje, value);
+                    System.out.println("Este es tu mazo por el momennto: ");
+                    System.out.println(CartasJ);
+                }else{
+                    System.out.println("ERROR ESA CARTA NO EXISTE");
+                }
+                
             }else if (choice.equals("2")){
                 System.out.println("Ingrese el nombre de la carta que desea saber su tipo. Cuidado con faltas ortográficas");
                 String personaje=scan.nextLine();
