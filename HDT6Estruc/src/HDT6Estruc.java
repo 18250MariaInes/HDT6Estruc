@@ -64,7 +64,7 @@ public class HDT6Estruc {
         } catch (IOException e){
             System.out.println("Error!");
         }
-        System.out.println(list);
+        //System.out.println(list);
         //Guarda tarjetas del mazo
         for (int i=0; i<list.size(); i++){
            String car=(list.get(i));
